@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hand Cricket Gestures</title>
+  <style>
+    body {
+      background: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: sans-serif;
+      padding: 2rem;
+    }
+
+    .hand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .fingers {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .finger {
+      width: 20px;
+      height: 60px;
+      background-color: #d2a679;
+      border-radius: 10px;
+      transition: transform 0.3s;
+      transform-origin: bottom;
+    }
+
+    .finger.down {
+      transform: scaleY(0.1);
+    }
+
+    .thumb {
+      width: 20px;
+      height: 40px;
+      background-color: #d2a679;
+      border-radius: 10px;
+      position: absolute;
+      left: -25px;
+      bottom: 0;
+      transform: rotate(-30deg);
+    }
+
+    .palm {
+      width: 80px;
+      height: 60px;
+      background-color: #b8865b;
+      border-radius: 20px;
+    }
+
+    button {
+      padding: 10px 15px;
+      margin: 5px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Hand Gesture Demo</h1>
+  
+  <div class="hand" id="hand">
+    <div class="fingers">
+      <div class="finger" id="finger1"></div> <!-- Index -->
+      <div class="finger" id="finger2"></div> <!-- Middle -->
+      <div class="finger" id="finger3"></div> <!-- Ring -->
+      <div class="finger" id="finger4"></div> <!-- Pinky -->
+    </div>
+    <div class="thumb" id="thumb"></div>
+    <div class="palm"></div>
+  </div>
+
+  <div>
+    <button onclick="showGesture(1)">Gesture 1</button>
+    <button onclick="showGesture(2)">Gesture 2</button>
+    <button onclick="showGesture(3)">Gesture 3</button>
+    <button onclick="showGesture(4)">Gesture 4</button>
+    <button onclick="showGesture(5)">Gesture 5</button>
+    <button onclick="showGesture(6)">Gesture 6</button>
+    <button onclick="showGesture(7)">Gesture 7</button>
+    <button onclick="showGesture(8)">Gesture 8</button>
+    <button onclick="showGesture(9)">Gesture 9</button>
+    <button onclick="showGesture(10)">Gesture 10</button>
+  </div>
+
+  <script>
+    function showGesture(num) {
+      // Reset all fingers to down
+      ['finger1', 'finger2', 'finger3', 'finger4', 'thumb'].forEach(id => {
+        document.getElementById(id).classList.add('down');
+      });
+
+      if (num === 1) {
+        document.getElementById('finger1').classList.remove('down'); // index
+      }
+      if (num === 2) {
+        document.getElementById('finger1').classList.remove('down'); // index
+        document.getElementById('finger2').classList.remove('down'); // middle
+      }
+      if (num === 3) {
+        document.getElementById('finger1').classList.remove('down'); // index
+        document.getElementById('finger2').classList.remove('down'); // middle
+        document.getElementById('finger3').classList.remove('down'); // ring
+      }
+      if (num === 4) {
+        document.getElementById('finger1').classList.remove('down'); // index
+        document.getElementById('finger2').classList.remove('down'); // middle
+        document.getElementById('finger3').classList.remove('down'); // ring
+        document.getElementById('finger4').classList.remove('down'); // pinky
+      }
+      if (num === 5) {
+        ['finger1', 'finger2', 'finger3', 'finger4'].forEach(id => {
+          document.getElementById(id).classList.remove('down'); // All fingers open
+        });
+      }
+      if (num === 6) {
+        document.getElementById('thumb').classList.remove('down'); // thumb open
+      }
+      if (num === 7) {
+        document.getElementById('thumb').classList.remove('down'); // thumb open
+        document.getElementById('finger1').classList.remove('down'); // index open
+      }
+      if (num === 8) {
+        document.getElementById('thumb').classList.remove('down'); // thumb open
+        document.getElementById('finger1').classList.remove('down'); // index open
+        document.getElementById('finger2').classList.remove('down'); // middle open
+      }
+      if (num === 9) {
+        document.getElementById('finger1').classList.add('down'); // index closed
+        ['finger2', 'finger3', 'finger4', 'thumb'].forEach(id => {
+          document.getElementById(id).classList.remove('down'); // all other fingers open
+        });
+      }
+      if (num === 10) {
+        document.getElementById('finger1').classList.remove('down'); // index open
+        document.getElementById('finger4').classList.remove('down'); // pinky open
+      }
+    }
+  </script>
+</body>
+</html>
